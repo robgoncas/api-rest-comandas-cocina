@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "main": "app.js",
   "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "start": "node app.js",
-    "build": "npm install",
+    "build": "echo build",
     "dev": "nodemon app.js"
   },
   "dependencies": {
@@ -16,5 +19,11 @@
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.11.0",
     "sequelize": "^6.37.0"
+  },
+  "optionalDependencies": {
+    "pg-native": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
