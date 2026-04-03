@@ -20,10 +20,12 @@ const iniciar = async () => {
     await sequelize.authenticate();
     await sequelize.sync();
     console.log('Base de datos conectada - ok');
-    app.listen(process.env.SERVER_PORT, () => console.log(`Servidor corriendo`));
+    //app.listen(process.env.SERVER_PORT, () => console.log(`Servidor corriendo`));
   } catch (e) {
     console.error(e);
   }
 };
+
+module.exports = app;
 
 iniciar();
