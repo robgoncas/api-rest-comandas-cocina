@@ -15,17 +15,30 @@ app.use(cors());
 app.use('/api/auth', auth_routes);
 app.use('/api/comandas', comanda_routes);
 
+// Ruta de prueba para verificar que la API funciona
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'API funcionando correctamente' });
+});
+
+// Conectar a la base de datos (sin iniciar el servidor)
 const iniciar = async () => {
   try {
     await sequelize.authenticate();
     await sequelize.sync();
     console.log('Base de datos conectada - ok');
-    //app.listen(process.env.SERVER_PORT, () => console.log(`Servidor corriendo`));
   } catch (e) {
-    console.error(e);
+    console.error('Error de conexión a la base de datos:', e);
   }
 };
 
-module.exports = app;
+// Solo ejecutar si no estamos en Vercel
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.SERVER_PORT || 3000;
+  app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+}
 
+// Iniciar conexión a DB
 iniciar();
+
+// Exportar para Vercel
+export default app;
