@@ -17,6 +17,7 @@ dotenv.config();
 
 export const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: pg,
+  dialectModule: pg,
   protocol: 'postgres',
   logging: false,
   dialectOptions: {
