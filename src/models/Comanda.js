@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/db.js';
+import sequelize from '../config/db.js';
 
 export const Comanda = sequelize.define('Comanda', {
   texto: DataTypes.STRING,
