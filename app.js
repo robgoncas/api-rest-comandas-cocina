@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
-import { sequelize } from './src/config/db.js';
+import sequelize from './src/config/db.js';
 import auth_routes from './src/routes/auth_routes.js';
 import comanda_routes from './src/routes/comanda_routes.js';
 import cors from 'cors';
