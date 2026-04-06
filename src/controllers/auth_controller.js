@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { Usuario } from '../models/Usuario.js';
 
+
 export const register = async (req, res) => {
   const { username, password, rol } = req.body;
 
@@ -30,4 +31,8 @@ export const login = async (req, res) => {
   );
 
   res.json({ token });
+};
+
+export const login_page = (req, res) => {
+  res.sendFile('login.html', { root: './src/public' });
 };

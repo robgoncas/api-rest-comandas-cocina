@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
 import { sequelize } from './src/config/db.js';
 import auth_routes from './src/routes/auth_routes.js';
 import comanda_routes from './src/routes/comanda_routes.js';
 import cors from 'cors';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -11,6 +13,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/auth', auth_routes);
 app.use('/api/comandas', comanda_routes);
